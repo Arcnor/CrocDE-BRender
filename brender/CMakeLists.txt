@@ -10,9 +10,10 @@ add_subdirectory(v1db)
 
 add_subdirectory(nulldev)
 add_subdirectory(glrend)
+add_subdirectory(bgfxrend)
 
 add_library(brender INTERFACE)
-target_link_libraries(brender INTERFACE v1db glrend)
+target_link_libraries(brender INTERFACE v1db glrend bgfxrend)
 
 ##
 # Full BRender, with drivers.

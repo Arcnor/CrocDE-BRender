@@ -6,6 +6,14 @@ cmake_policy(SET CMP0072 NEW)
 
 find_package(Perl REQUIRED)
 
+add_compile_definitions(BGFX_CONFIG_RENDERER_OPENGL=41)
+add_compile_definitions(BGFX_CONFIG_RENDERER_DIRECT3D9=1)
+add_compile_definitions(BGFX_CONFIG_RENDERER_DIRECT3D11=1)
+add_compile_definitions(BGFX_CONFIG_RENDERER_DIRECT3D12=1)
+add_compile_definitions(BGFX_CONFIG_RENDERER_METAL=1)
+add_compile_definitions(BGFX_CONFIG_RENDERER_VULKAN=1)
+add_subdirectory(libsrc/bgfx.cmake EXCLUDE_FROM_ALL)
+
 option(BRENDER_DISABLE_FINDSDL "Disable searching for SDL2" OFF)
 
 if(NOT BRENDER_DISABLE_FINDSDL)
