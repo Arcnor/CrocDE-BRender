@@ -202,7 +202,7 @@ void _MemRectFill_A(char *dest, br_uint_32 pwidth, br_uint_32 pheight,
 	 * 		self->pm_width,self->pm_height, self->pm_row_bytes, bytes, colour);
 	 */
 
-	MemFill8((br_uint_8*)dest, (br_uint_8)colour, (d_stride*pwidth)*pheight);
+	MemFill8((br_uint_8*)dest, (br_uint_8)colour, d_stride*pheight);
 }
 
 void _MemRectCopy_A(char *dest, const char *src,

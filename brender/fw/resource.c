@@ -122,7 +122,7 @@ STATIC struct resource_header *UserToRes(void *r)
 	p -= offsetof(struct resource_header, class) + sizeof(((struct resource_header*)NULL)->class);
 #endif
 
-	struct resource_header *res = p;
+	struct resource_header *res = (struct resource_header *) p;
 #if BR_RES_TAGGING
 	UASSERT(res->magic_ptr == res);
 	UASSERT(res->magic_num == BR_RES_MAGIC);

@@ -41,7 +41,8 @@ static void templateResolveNames(br_tv_template *template)
 	br_tv_template_entry *tp;
 	int n;
 
-	for(n = 0, tp = template->entries; n < template->n_entries; tp++, n++) {
+	// FIXME: We're removing the const qualifier!
+	for(n = 0, tp = (br_tv_template_entry*)template->entries; n < template->n_entries; tp++, n++) {
 
 		if(tp->name == NULL)
 			continue;
@@ -999,7 +1000,7 @@ br_error BR_RESIDENT_ENTRY BrTokenValueQueryAllSize(
 	return BRE_OK;
 }
 
-_Static_assert(sizeof(br_value_passthrough) == sizeof(br_value), "sizeof(br_value_passthrough) != sizeof(br_value)");
+static_assert(sizeof(br_value_passthrough) == sizeof(br_value), "sizeof(br_value_passthrough) != sizeof(br_value)");
 
 br_error BR_RESIDENT_ENTRY BrTokenValueSet(
 	void *mem,

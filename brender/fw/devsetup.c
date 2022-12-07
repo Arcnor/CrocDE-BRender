@@ -328,7 +328,7 @@ br_pixelmap * BR_PUBLIC_ENTRY BrDevBeginOld(const char *setup_string)
 		BR_ERROR0("Device already active");
 
 	if(BrDevBegin(&s, setup_string) != BRE_OK)
-		BR_ERROR0("Could not start driver");
+		BR_ERROR1("Could not start driver %s", setup_string);
 
 	return s;
 }

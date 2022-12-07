@@ -6,13 +6,16 @@
  *
  * Using images from host environment
  */
+// FIXME: We need to include "windows.h" before brender to avoid problems with the `pragma pack` changes, but we're ignoring if `__WIN_32__` was manually defined
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #include "brender.h"
 
 #include "host.h"
 
 #ifdef __WIN_32__
-
-#include <windows.h>
 
 void * BR_RESIDENT_ENTRY HostImageLoad(const char *name)
 {

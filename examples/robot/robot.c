@@ -54,6 +54,7 @@
 
 #include <brender.h>              /* Master include file for BRender        */
 #include <brassert.h>             /* Assertion macros                       */
+#include <assert.h>
 
 #include "world.h"                /* 3D world and views into it             */
 #include "app.h"                  /* Application prototypes and defines     */
@@ -166,6 +167,7 @@ brwin_world *WorldAllocate(void)
     world->actor = BrActorAdd(world->root, BrActorAllocate(BR_ACTOR_NONE, NULL));
 
     a = BrActorLoad("robo.act");
+	UASSERT_MESSAGE("Cannot load robo.act", a != NULL);
     BrActorAdd(world->actor, a);
 
     /*

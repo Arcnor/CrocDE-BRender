@@ -226,6 +226,7 @@ typedef struct br_pixelmap {
 	 */
 	char *identifier;
 
+#pragma warning(suppress :4003)
 	BR_PIXELMAP_MEMBERS_PREFIXED()
 
 } br_pixelmap;

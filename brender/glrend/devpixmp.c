@@ -547,7 +547,7 @@ br_error BR_CMETHOD_DECL(br_device_pixelmap_gl, match)(br_device_pixelmap *self,
 /*
  * Called before buffer swap. Use to render overlays, e.g. ImGui,
  */
-void BR_WEAK _GLREND_PreSwapHook(GLuint fbo)
+void /*BR_WEAK*/ _GLREND_PreSwapHook(GLuint fbo)
 {
     /* nop */
 }

@@ -1,7 +1,12 @@
+#include <inttypes.h>
 #include <SDL.h>
 #include <brender.h>
 #include <brglrend.h>
 #include <brsdl.h>
+
+#ifdef _DEBUG
+int trianglesInHierarchyCount = 0;
+#endif
 
 /*
  * Primitive heap - used by z-buffered renderer to defer drawing of blended primitives

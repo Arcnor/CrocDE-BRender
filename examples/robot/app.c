@@ -29,6 +29,7 @@
  *                                                                          *
  ****************************************************************************/
 
+#include <inttypes.h>             /* PRIxPTR */
 #include <stdlib.h>               /* Standard C information                 */
 #include <SDL.h>                  /* Master include file for SDL            */
 #include <brender.h>              /* Master include file for BRender        */

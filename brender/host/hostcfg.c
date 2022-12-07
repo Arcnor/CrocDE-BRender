@@ -7,6 +7,11 @@
  * Reading config. strings from host environment
  */
 
+// FIXME: We need to include "windows.h" before brender to avoid problems with the `pragma pack` changes, but we're ignoring if `__WIN_32__` was manually defined
+#ifdef WIN32
+#include <windows.h>
+#endif
+
 #include <stdio.h>
 
 #include "brender.h"
@@ -37,8 +42,6 @@ char * BR_RESIDENT_ENTRY HostDefaultDevice()
 
 
 #ifdef __WIN_32__
-
-#include <windows.h>
 
 
 br_boolean BR_RESIDENT_ENTRY HostIniSectionExists( const char *ini_file, const char *section_name )

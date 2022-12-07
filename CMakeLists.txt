@@ -14,6 +14,10 @@ add_compile_definitions(BGFX_CONFIG_RENDERER_METAL=1)
 add_compile_definitions(BGFX_CONFIG_RENDERER_VULKAN=1)
 add_subdirectory(libsrc/bgfx.cmake EXCLUDE_FROM_ALL)
 
+if (WIN32)
+    add_definitions(-DWIN32_LEAN_AND_MEAN)
+endif()
+
 option(BRENDER_DISABLE_FINDSDL "Disable searching for SDL2" OFF)
 
 if(NOT BRENDER_DISABLE_FINDSDL)

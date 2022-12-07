@@ -23,7 +23,7 @@ BR_RCS_ID("$Id: loader.c 1.1 1997/12/10 16:41:08 jon Exp $")
 /*
  * Attempts to load an image file into memory
  */
-br_image *ImageLoad(char *name)
+br_image *ImageLoad(const char *name)
 {
 	void *fh;
 	int mode = BR_FS_MODE_BINARY;

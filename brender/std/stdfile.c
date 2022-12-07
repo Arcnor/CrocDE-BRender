@@ -6,7 +6,6 @@
  *
  * Default file handler that uses <stdio.h>
  */
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 #include <limits.h>
@@ -19,44 +18,44 @@ BR_RCS_ID("$Id: stdfile.c 1.1 1997/12/10 16:41:28 jon Exp $")
 
 
 
-#ifdef _WIN32
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-static wchar_t *BrStdioToWinWchar(const char *utf8name, wchar_t *buf, br_size_t count)
-{
-	if(utf8name == NULL)
-		return NULL;
-
-	br_size_t inlen = BrStrLen(utf8name);
-
-	int x = MultiByteToWideChar(CP_UTF8, 0, utf8name, (int)inlen, buf, (int)count);
-	if(x == 0)
-		return NULL;
-
-	buf[x] = L'\0';
-	return buf;
-}
-#endif
+//#ifdef _WIN32
+//#define WIN32_LEAN_AND_MEAN
+//#include <windows.h>
+//static wchar_t *BrStdioToWinWchar(const char *utf8name, wchar_t *buf, br_size_t count)
+//{
+//	if(utf8name == NULL)
+//		return NULL;
+//
+//	br_size_t inlen = BrStrLen(utf8name);
+//
+//	int x = MultiByteToWideChar(CP_UTF8, 0, utf8name, (int)inlen, buf, (int)count);
+//	if(x == 0)
+//		return NULL;
+//
+//	buf[x] = L'\0';
+//	return buf;
+//}
+//#endif
 
 static FILE *BrStdioFopenUtf8(const char *utf8Name, const char *mode)
 {
-#ifdef _WIN32
-	static wchar_t buf[4096];
-
-	wchar_t *name = BrStdioToWinWchar(utf8Name, buf, BR_ASIZE(buf));
-	if(name == NULL)
-		return NULL;
-
-	br_size_t modelen = BrStrLen(mode);
-
-	const wchar_t *lmode = alloca(modelen * sizeof(wchar_t));
-	if(BrStdioToWinWchar(mode, lmode, modelen) == NULL)
-		return NULL;
-
-	return _wfopen(name, lmode);
-#else
+//#ifdef _WIN32
+//	static wchar_t buf[4096];
+//
+//	wchar_t *name = BrStdioToWinWchar(utf8Name, buf, BR_ASIZE(buf));
+//	if(name == NULL)
+//		return NULL;
+//
+//	br_size_t modelen = BrStrLen(mode);
+//
+//	const wchar_t *lmode = alloca(modelen * sizeof(wchar_t));
+//	if(BrStdioToWinWchar(mode, lmode, modelen) == NULL)
+//		return NULL;
+//
+//	return _wfopen(name, lmode);
+//#else
 	return fopen(utf8Name, mode);
-#endif
+//#endif
 }
 
 
